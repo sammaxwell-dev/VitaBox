@@ -11,6 +11,7 @@ export interface Product {
     tasteProfile?: string[];
     isBundle?: boolean;
     contents?: string[];
+    hoverVisual?: string; // URL to video (mp4/webm) or gif
 }
 
 export const products: Product[] = [
@@ -25,7 +26,9 @@ export const products: Product[] = [
         image: '/assets/drizzle_vitabox_1765228886215.png',
         bgColor: '#7cb342', // Green
         textColor: 'text-white',
-        tasteProfile: ['Grass', 'Pepper', 'Tomato Leaf', 'Almond']
+        tasteProfile: ['Grass', 'Pepper', 'Tomato Leaf', 'Almond'],
+        // Using a placeholder GIF or secondary image for now
+        hoverVisual: '/assets/drizzle_bottle_1765228562555.png'
     },
     {
         id: 'sizzle',
@@ -37,7 +40,8 @@ export const products: Product[] = [
         image: '/assets/sizzle_vitabox_1765228905529.png',
         bgColor: '#dbe655', // Lime
         textColor: 'text-graza-darkGreen',
-        tasteProfile: ['Smooth', 'Ripe Olive', 'Buttery', 'Mild']
+        tasteProfile: ['Smooth', 'Ripe Olive', 'Buttery', 'Mild'],
+        hoverVisual: '/assets/sizzle_bottle_1765228576494.png'
     },
     {
         id: 'frizzle',
@@ -49,7 +53,8 @@ export const products: Product[] = [
         image: '/assets/frizzle_vitabox_1765228919925.png',
         bgColor: '#e65100', // Orange-ish
         textColor: 'text-white',
-        tasteProfile: ['Neutral', 'Crisp']
+        tasteProfile: ['Neutral', 'Crisp'],
+        hoverVisual: '/assets/frizzle_bottle_1765228591992.png'
     },
     {
         id: 'beebox',
