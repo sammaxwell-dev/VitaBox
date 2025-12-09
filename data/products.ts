@@ -88,7 +88,7 @@ export const products: Product[] = [
         tasteProfile: ['Spicy', 'Earthy', 'Turmeric']
     },
 
-    // Bundles (for reference or if we want to treat them as products too)
+    // Bundles
     {
         id: 'duo',
         name: 'The Duo',
@@ -127,5 +127,72 @@ export const products: Product[] = [
         textColor: 'text-graza-darkGreen',
         isBundle: true,
         contents: ['sizzle', 'drizzle']
+    },
+    {
+        id: 'refill',
+        name: 'The Refill',
+        fullName: 'Big Sizzle',
+        description: 'Keep it flowing. A larger format for our daily cooking oil.',
+        price: 28,
+        badge: 'REFILL',
+        image: '/assets/sizzle_vitabox_1765228905529.png', // Fallback
+        bgColor: '#dbe655',
+        textColor: 'text-graza-darkGreen',
+        isBundle: true,
+        contents: ['sizzle']
+    },
+
+    // Gift Sets
+    {
+        id: 'dinner-party',
+        name: 'Dinner Party',
+        fullName: 'The Host Pack',
+        description: 'Everything needed to host the perfect evening. Chips, oils, and vibes included.',
+        price: 65,
+        badge: 'GIFT SET',
+        image: '/assets/shop_dinner_party.png', // Needs asset or placeholder
+        bgColor: '#1a237e', // Deep Blue
+        textColor: 'text-white',
+        isBundle: true,
+        contents: ['sizzle', 'drizzle']
+    },
+    {
+        id: 'sunday-reset',
+        name: 'Sunday Reset',
+        fullName: 'Self Care Kit',
+        description: 'Peace won\'t wait. Tea, candle, honey, and a mug for your soul.',
+        price: 65, // Price not explicitly in KB list but inferred or set standard
+        badge: 'RELAX',
+        image: '/assets/shop_honey.png', // Needs asset
+        bgColor: '#8d6e63', // Brownish
+        textColor: 'text-white',
+        isBundle: true,
+        contents: ['beebox']
+    },
+    {
+        id: 'master-chef',
+        name: 'Master Chef',
+        fullName: 'The Culinary Set',
+        description: 'Your hands work magic, we just provide the tools. Oils, vinegar, and spices.',
+        price: 85, // Estimated
+        badge: 'CHEF CHOICE',
+        image: '/assets/shop_trio_set.png', // Fallback
+        bgColor: '#212121', // Dark
+        textColor: 'text-white',
+        isBundle: true,
+        contents: ['sizzle', 'drizzle', 'zing', 'spark']
+    },
+    {
+        id: 'health-hero',
+        name: 'Health Hero',
+        fullName: 'Wellness Pack',
+        description: 'Long happy life is the best gift. Honey, Vinegar, Spices for your health.',
+        price: 75, // Estimated
+        badge: 'WELLNESS',
+        image: '/assets/shop_vinegar.png', // Fallback
+        bgColor: '#4caf50', // Green
+        textColor: 'text-white',
+        isBundle: true,
+        contents: ['beebox', 'zing', 'spark']
     }
 ];

@@ -104,7 +104,7 @@ const ShopDropdown: React.FC<{
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/shop-all" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
+                                <Link to="/products" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
                                     Shop All
                                 </Link>
                             </li>
@@ -243,7 +243,7 @@ const Navbar: React.FC = () => {
                             className="h-full flex items-center"
                             onMouseEnter={() => setIsShopHovered(true)}
                         >
-                            <Link to="/" className={`hover:underline decoration-graza-lime decoration-2 underline-offset-4 hidden md:block py-4 ${isShopHovered ? 'underline' : ''}`}>Shop</Link>
+                            <Link to="/products" className={`hover:underline decoration-graza-lime decoration-2 underline-offset-4 hidden md:block py-4 ${isShopHovered ? 'underline' : ''}`}>Shop</Link>
                         </div>
                         <a href="#" onClick={handleComingSoon} className="hover:underline decoration-graza-lime decoration-2 underline-offset-4 hidden md:block">Gift Shop</a>
                         <a href="#" onClick={handleComingSoon} className="hover:underline decoration-graza-lime decoration-2 underline-offset-4 hidden md:block">About</a>
@@ -297,7 +297,7 @@ const Navbar: React.FC = () => {
                     </button>
 
                     <div className="flex flex-col gap-8 font-logo text-4xl text-graza-darkGreen">
-                        <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Shop</Link>
+                        <Link to="/products" onClick={() => setIsMobileMenuOpen(false)}>Shop</Link>
                         <Link to="/gifts" onClick={() => setIsMobileMenuOpen(false)}>Gift Shop</Link>
                         <a href="#" onClick={handleComingSoon}>About</a>
                         <a href="#" onClick={handleComingSoon}>Blog</a>
