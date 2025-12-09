@@ -16,7 +16,7 @@ const ChatButton: React.FC = () => {
             >
                 <iframe
 
-                    src="https://bey.chat/c5f2e06a-fc1f-4c0a-a1b6-3b96f9006438"
+                    src="https://bey.chat/3b536ce4-4820-4e0a-98a1-0e77bf0af2ba"
                     width="100%"
                     height="100%"
                     frameBorder="0"
