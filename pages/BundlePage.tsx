@@ -1,49 +1,26 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import PillButton from '../components/PillButton';
 import SpinningStar from '../components/SpinningStar';
+import { products } from '../data/products';
 
 const BundlePage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
 
-    // If duplicate pages issue: "Duo" and "Trio" linking to the same generic page. 
-    // We will handle them as distinct detail views if an ID is present.
+    // Data handling
+    const bundles = products.filter(p => p.isBundle);
+    const product = id ? products.find(p => p.id === id && p.isBundle) : null;
 
-    if (id === 'duo' || id === 'trio' || id === 'starter') {
-        const isDuo = id === 'duo';
-        const isStarter = id === 'starter'; // Basic handling if starter is needed down the line
-
-        // Determine content based on ID
-        let product = {
-            name: '"The Duo"',
-            description: 'The perfect pair. Sizzle for cooking, Drizzle for finishing. The only two olive oils you need.',
-            price: 35,
-            image: '/assets/shop_duo_set.png',
-            bgColor: '#a8e6a1', // light green
-            textColor: 'text-graza-darkGreen'
-        };
-
-        if (!isDuo && !isStarter) {
-            // Trio
-            product = {
-                name: '"The Trio"',
-                description: 'The complete kitchen collection. Sizzle, Drizzle, and our special zesty lemon infusion.',
-                price: 50,
-                image: '/assets/shop_trio_set.png',
-                bgColor: '#f2c94c', // yellow
-                textColor: 'text-graza-darkGreen'
-            };
-        } else if (isStarter) {
-            product = {
-                name: '"The Starter Kit"',
-                description: 'Everything you need to get cooking. Sizzle, Drizzle, and a spout meant for friends.',
-                price: 40,
-                image: '/assets/shop_duo_set.png', // Fallback image
-                bgColor: '#e6e6e6',
-                textColor: 'text-graza-darkGreen'
-            };
+    // Redirect if ID is present but not found (optional)
+    useEffect(() => {
+        if (id && !product) {
+            // navigate('/bundles'); 
         }
+    }, [id, product, navigate]);
 
+    // Detail View
+    if (product) {
         return (
             <div className={`min-h-screen w-full pt-32 pb-20 px-6 trantision-colors duration-500`} style={{ backgroundColor: product.bgColor }}>
                 <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -62,7 +39,7 @@ const BundlePage: React.FC = () => {
                         <div className="flex items-center gap-2">
                             <SpinningStar className="text-current" />
                             <span className="font-mono uppercase tracking-widest text-sm">
-                                Most Popular
+                                {product.badge || 'Bundle'}
                             </span>
                             <SpinningStar className="text-current" />
                         </div>
@@ -70,6 +47,9 @@ const BundlePage: React.FC = () => {
                         <h1 className="font-logo text-7xl md:text-8xl leading-[0.9]">
                             {product.name}
                         </h1>
+                        <h2 className="font-serif italic text-3xl md:text-4xl opacity-80">
+                            {product.fullName}
+                        </h2>
 
                         <p className="font-mono text-lg leading-relaxed max-w-md">
                             {product.description}
@@ -89,7 +69,7 @@ const BundlePage: React.FC = () => {
         );
     }
 
-    // Default List View (for /bundles)
+    // List View (Default)
     return (
         <div className="min-h-screen w-full pt-32 pb-20 px-6 bg-[#dbe655]">
             <div className="max-w-[1200px] mx-auto text-center">
@@ -101,32 +81,19 @@ const BundlePage: React.FC = () => {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Bundle Card 1 */}
-                    <div className="bg-[#f5ebe0] rounded-[3rem] p-8 flex flex-col items-center hover:-translate-y-2 transition-transform duration-300">
-                        <img src="/assets/shop_duo_set.png" alt="Duo" className="w-full h-auto mb-6 drop-shadow-xl" />
-                        <h3 className="font-logo text-4xl text-graza-darkGreen mb-2">The Duo</h3>
-                        <p className="font-mono text-sm text-graza-darkGreen/70 mb-6">Sizzle + Drizzle</p>
-                        <PillButton className="w-full justify-center">Add - $35</PillButton>
-                    </div>
-
-                    {/* Bundle Card 2 - FIXING OVERLAP: Removed overflow hidden if present, adjusted z-index */}
-                    <div className="bg-[#f5ebe0] rounded-[3rem] p-8 flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 transform scale-105 border-4 border-graza-darkGreen relative z-10">
-                        <div className="absolute top-4 right-4 z-20 bg-graza-darkGreen text-white px-3 py-1 rounded-full text-xs font-mono uppercase shadow-md">Best Value</div>
-                        <div className="relative z-10 mb-6 w-full">
-                            <img src="/assets/shop_trio_set.png" alt="Trio" className="w-full h-auto drop-shadow-xl" />
+                    {bundles.map((bundle) => (
+                        <div key={bundle.id} onClick={() => navigate(`/bundle/${bundle.id}`)} className={`rounded-[3rem] p-8 flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer ${bundle.id === 'trio' ? 'bg-[#f5ebe0] border-4 border-graza-darkGreen relative z-10 transform scale-105' : 'bg-[#f5ebe0]'}`}>
+                            {bundle.id === 'trio' && (
+                                <div className="absolute top-4 right-4 z-20 bg-graza-darkGreen text-white px-3 py-1 rounded-full text-xs font-mono uppercase shadow-md">Best Value</div>
+                            )}
+                            <div className="relative z-10 mb-6 w-full">
+                                <img src={bundle.image} alt={bundle.name} className="w-full h-auto drop-shadow-xl" />
+                            </div>
+                            <h3 className="font-logo text-4xl text-graza-darkGreen mb-2">{bundle.name}</h3>
+                            <p className="font-mono text-sm text-graza-darkGreen/70 mb-6">{bundle.fullName}</p>
+                            <PillButton className="w-full justify-center">Add - ${bundle.price}</PillButton>
                         </div>
-                        <h3 className="font-logo text-4xl text-graza-darkGreen mb-2">The Trio</h3>
-                        <p className="font-mono text-sm text-graza-darkGreen/70 mb-6">Complete collection</p>
-                        <PillButton className="w-full justify-center">Add - $50</PillButton>
-                    </div>
-
-                    {/* Bundle Card 3 */}
-                    <div className="bg-[#f5ebe0] rounded-[3rem] p-8 flex flex-col items-center hover:-translate-y-2 transition-transform duration-300">
-                        <img src="/assets/sizzle_vitabox_1765228905529.png" alt="Refill" className="w-full h-auto mb-6 drop-shadow-xl" />
-                        <h3 className="font-logo text-4xl text-graza-darkGreen mb-2">The Refill</h3>
-                        <p className="font-mono text-sm text-graza-darkGreen/70 mb-6">Keep it flowing</p>
-                        <PillButton className="w-full justify-center">Add - $28</PillButton>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>

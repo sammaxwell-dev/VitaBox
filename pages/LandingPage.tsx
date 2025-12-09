@@ -3,6 +3,8 @@ import { X } from 'lucide-react';
 import PillButton from '../components/PillButton';
 import ProductShowcase from '../components/ProductShowcase';
 import ProductGridSection from '../components/ProductGridSection';
+import MarqueeSection from '../components/MarqueeSection';
+import NewsletterSection from '../components/NewsletterSection';
 
 const LandingPage: React.FC = () => {
     const [isDiscountVisible, setIsDiscountVisible] = React.useState(true);
@@ -37,7 +39,7 @@ const LandingPage: React.FC = () => {
                         </div>
                         {/* Floating Discount Pill */}
                         {isDiscountVisible && (
-                            <div className="md:absolute md:bottom-8 md:right-0 transition-opacity duration-300">
+                            <div className="md:absolute md:bottom-28 md:right-0 transition-opacity duration-300">
                                 <PillButton
                                     variant="secondary"
                                     className="shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] font-bold"
@@ -52,7 +54,9 @@ const LandingPage: React.FC = () => {
             </div>
 
             <ProductShowcase />
+            <MarqueeSection />
             <ProductGridSection />
+            <NewsletterSection />
         </div>
     );
 };

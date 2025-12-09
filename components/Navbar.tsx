@@ -48,17 +48,51 @@ const ShopDropdown: React.FC<{
                         </ul>
                     </div>
 
-                    {/* Shop By Collection */}
+                    {/* Shop Individual Products */}
                     <div className="flex flex-col gap-6">
                         <h3 className="font-mono text-xs tracking-widest text-graza-darkGreen/60 uppercase font-bold">
-                            Shop By Collection
+                            Individual Products
                         </h3>
                         <ul className="flex flex-col gap-4 font-mono text-base text-graza-darkGreen font-medium">
                             <li>
                                 <Link to="/product/drizzle" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
-                                    Olive Oil
+                                    Drizzle (Olive Oil)
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="/product/sizzle" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
+                                    Sizzle (Olive Oil)
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/product/frizzle" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
+                                    Frizzle (High Heat)
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/product/beebox" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
+                                    BeeBox (Honey)
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/product/zing" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
+                                    Zing (Vinegar)
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/product/spark" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
+                                    Spark (Spices)
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Shop By Collection */}
+                    <div className="flex flex-col gap-6">
+                        <h3 className="font-mono text-xs tracking-widest text-graza-darkGreen/60 uppercase font-bold">
+                            Collections
+                        </h3>
+                        <ul className="flex flex-col gap-4 font-mono text-base text-graza-darkGreen font-medium">
                             <li>
                                 <Link to="/bundles" onClick={onLinkClick} className="hover:text-graza-darkGreen/70 transition-colors">
                                     Bundles

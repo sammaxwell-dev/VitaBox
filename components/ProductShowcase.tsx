@@ -32,7 +32,7 @@ const products = [
         title: "The Set",
         description: "Everything you need for the perfect kitchen setup.",
         cta: "GET THE SET",
-        image: "/assets/showcase_set_vitabox_correction_1765229371219.png",
+        image: "/assets/drizzle_vitabox_1765228886215.png",
         bgColor: "#cedf37" // lime
     }
 ];
